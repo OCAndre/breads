@@ -1,7 +1,7 @@
 // dependencies
-const mongoose = require('mongoose')
-const Bread = require('./bread')
-const { Schema } = mongoose
+// const mongoose = require('mongoose')
+// const Bread = require('./bread')
+// const { Schema } = mongoose
 
 // schema
 const bakerSchema = new Schema({
@@ -27,8 +27,8 @@ bakerSchema.virtual('breads', {
 
 // hooks 
 bakerSchema.post('findOneAndDelete', function () {
-    Bread.deleteMany({ baker: this._conditions._id })
-        .then(deleteStatus => {
+    Bread.deleteMany({ baker: baker._conditions._id })
+        .then((deleteStatus: any) => {
             console.log(deleteStatus)
         })
 })
